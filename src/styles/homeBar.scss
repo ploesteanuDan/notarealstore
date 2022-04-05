@@ -1,30 +1,10 @@
 .homeBar{
-  display: grid;
-  grid-template-columns: [start] 532px [col1] 2px [col2] auto [end] ;
-  grid-template-rows: 255px;
-  column-gap: 55px;
-  margin-top: 72px;
-  padding-bottom: 72px;
   position: relative;
-  .hLine{
-    height: 335px;
-    width: 2px;
-    background-color: var(--grey);
-    margin-top: 170px;
-  }
   .vLine{
     position: absolute;
     bottom: 0;
     height: 2px;
     background-color: var(--grey);
-  }
-  .vl1{
-    left: 0;
-    width: 348px;
-  }
-  .vl2{
-    right: -141px;
-    width: 765px;
   }
   .homeBarProducts{
     display: grid;
@@ -46,34 +26,78 @@
       }
     }
   }
-  .homeAllEditorials{
-    height: 100%;
-    img{
-      height: 209px;
-      width: 100%;
-      object-fit:cover;
-      border: 2px solid var(--grey)
+ 
+}
+
+@media screen and (min-width: 1366px) {
+  .homeBar{
+    display: grid;
+    grid-template-columns: [start] 532px [col1] 2px [col2] auto [end] ;
+    grid-template-rows: 255px;
+    column-gap: 55px;
+    margin-top: 72px;
+    padding-bottom: 72px;
+    .hLine{
+      height: 335px;
+      width: 2px;
+      background-color: var(--grey);
+      margin-top: 170px;
     }
-    span{
-      display: flex;
-      flex-direction: row;
-      justify-content:flex-start;
-      align-items: center;
-      color: var(--black);
-      p{
-        margin-left: 20px;
-        font-family: 'Outfit';
-        font-size: 18px;
-    
+    .vl1{
+      left: 0;
+      width: 348px;
+    }
+    .vl2{
+      right: -141px;
+      width: 765px;
+    }
+    .homeAllEditorials{
+      height: 100%;
+      img{
+        height: 209px;
+        width: 100%;
+        object-fit:cover;
+        border: 2px solid var(--grey)
       }
-      svg{
-        margin-left: 10px;
-        margin-top: 3px;
-        polyline{
-          stroke-width: 30px;
-          stroke-linecap: square;
+      span{
+        display: flex;
+        flex-direction: row;
+        justify-content:flex-start;
+        align-items: center;
+        color: var(--black);
+        p{
+          margin-left: 20px;
+          font-family: 'Outfit';
+          font-size: 18px;
+      
+        }
+        svg{
+          margin-left: 10px;
+          margin-top: 3px;
+          polyline{
+            stroke-width: 30px;
+            stroke-linecap: square;
+          }
         }
       }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1365px) {
+  .homeBar{
+    margin-top: 58px;
+    padding-bottom: 58px;
+    .vl1{
+      left: 0;
+      width: 370px;
+    }
+    .vl2{
+      right: -82px;
+      width: 218px;
+    }
+    .hLine, .homeAllEditorials{
+      display: none;
     }
   }
 }
