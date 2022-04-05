@@ -1,0 +1,47 @@
+.product{
+  width: 256px;
+  img{
+    width: 100%;
+    height: 209px;
+    object-fit: cover;
+    border: 2px solid var(--grey);
+  }
+  span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Outfit';
+    font-size: 18px;
+    margin-top: 20px;
+    div{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      p{
+        margin: 0;
+      }
+    }
+    .left{
+      justify-content: flex-start;
+      margin-left: 20px;
+      p{
+        margin-right: 5px;
+      }
+      .producer{
+        color: var(--grey);
+      }
+      .name{
+        color: var(--black);
+      }
+    }
+    .right{
+      justify-content: flex-end;
+      margin-right: 20px;
+      p{
+        margin-left: 5px;
+        color: var(--purple);
+      }
+    }
+  }
+}
