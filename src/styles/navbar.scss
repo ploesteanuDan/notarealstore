@@ -1,9 +1,40 @@
+@media screen and (min-width: 768px) {
+  .navbar{
+    margin: 72px 0;
+    .navHamburger{
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1366px) {
+  .navbar{
+    margin: 58px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navbar{
+    margin: 72px 0;
+    .navHamburger{
+      display:flex;
+      justify-content: flex-end;
+      align-items:center;
+      flex-direction: row;
+    }
+    .navLinks{
+      .navLink{
+        display: none;
+      }
+    }
+  }
+}
+
 .navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-direction: row;
-  margin: 72px 0;
   p{
     margin: 0;
     font-family: 'Outfit';

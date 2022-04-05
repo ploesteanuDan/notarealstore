@@ -1,6 +1,7 @@
 :root{
   --purple: #6E63F8;
   --black: #262626;
+  --grey: #C9C7DB;
 }
 
 body {
@@ -24,6 +25,18 @@ code {
 @media screen and (min-width: 1366px) {
   .page{
     width: calc(100% - 141px * 2);
+  }
+}
+
+@media screen and (max-width: 1365px) and (min-width: 768px) {
+  .page{
+    width: calc(100% - 82px * 2);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page{
+    width: calc(100% - 37px * 2);
   }
 }
 
