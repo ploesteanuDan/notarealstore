@@ -5,6 +5,21 @@
   display: flex;
   align-items: center;
   justify-content:space-between;
+  position: relative;
+  .vLine{
+    position: absolute;
+    top: 0;
+    height: 2px;
+    background-color: var(--grey);
+  }
+  .vl1{
+    left: 0;
+    width: 532px;
+  }
+  .vl2{
+    right: 0;
+    width: 440px;
+  }
   p{
     margin: 0;
     font-family: 'Outfit';

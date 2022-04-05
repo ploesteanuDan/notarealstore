@@ -11,6 +11,8 @@ export default function Footer() {
       <div className="footerName">
         <p>Not a real store</p>
       </div>
+      <div className="vLine vl1" />
+      <div className="vLine vl2" />
     </div>
   );
 }

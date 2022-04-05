@@ -25,6 +25,8 @@ export default function HomeBar() {
           <CaretRight size={16} />
         </span>
       </div>
+      <div className="vLine vl1" />
+      <div className="vLine vl2" />
     </div>
   );
 }

@@ -3,12 +3,28 @@
   grid-template-columns: [start] 532px [col1] 2px [col2] auto [end] ;
   grid-template-rows: 255px;
   column-gap: 55px;
-  margin: 72px 0;
+  margin-top: 72px;
+  padding-bottom: 72px;
+  position: relative;
   .hLine{
     height: 335px;
     width: 2px;
     background-color: var(--grey);
     margin-top: 170px;
+  }
+  .vLine{
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--grey);
+  }
+  .vl1{
+    left: 0;
+    width: 348px;
+  }
+  .vl2{
+    right: -141px;
+    width: 765px;
   }
   .homeBarProducts{
     display: grid;

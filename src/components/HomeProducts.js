@@ -15,6 +15,8 @@ export default function HomeProducts() {
         <p>Shop now</p>
         <CaretRight size={17} />
       </div>
+      <div className="vLine vl1" />
+      <div className="vLine vl2" />
     </div>
   );
 }
