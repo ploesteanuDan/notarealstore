@@ -17,6 +17,7 @@ export default function HomeBar() {
           <p>Top sellers</p>
         </div>
       </div>
+      <div className="hLine" />
       <div className="homeAllEditorials">
         <img src={allEditorials} alt="notarealstore" />
         <span>

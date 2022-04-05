@@ -1,10 +1,15 @@
 .homeBar{
   display: grid;
-  grid-template-columns: [start] 532px [col1] auto [end] ;
+  grid-template-columns: [start] 532px [col1] 2px [col2] auto [end] ;
   grid-template-rows: 255px;
-  column-gap: 112px;
+  column-gap: 55px;
   margin: 72px 0;
-  padding:72px 0;
+  .hLine{
+    height: 335px;
+    width: 2px;
+    background-color: var(--grey);
+    margin-top: 170px;
+  }
   .homeBarProducts{
     display: grid;
     grid-template-columns: 1fr 1fr;

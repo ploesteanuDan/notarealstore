@@ -18,6 +18,7 @@ export default function HomeHero() {
           <CaretRight size={17} />
         </div>
       </div>
+      <div className="hLine" />
       <div className="picture">
         <div className="bar b1" />
         <div className="bar b2" />

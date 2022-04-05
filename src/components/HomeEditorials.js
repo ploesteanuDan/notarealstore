@@ -4,14 +4,17 @@ import editorials from "../assets/json/editorials.json";
 export default function HomeEditorials() {
   return (
     <div className="homeEditorials">
-      {editorials.editorials.map((editorial, index) => (
-        <img
-          key={index}
-          id={"pic" + index}
-          src={editorial.picture}
-          alt="notarealstore"
-        />
-      ))}
+      <img
+        id="pic0"
+        src={editorials.editorials[0].picture}
+        alt="notarealstore"
+      />
+      <div className="hLine" />
+      <img
+        id="pic1"
+        src={editorials.editorials[1].picture}
+        alt="notarealstore"
+      />
       <div className="homeEditorialsLabel">
         <p>EDITORIALS</p>
       </div>
