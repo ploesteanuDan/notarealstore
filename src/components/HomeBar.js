@@ -8,9 +8,11 @@ export default function HomeBar() {
   return (
     <div className="homeBar">
       <div className="homeBarProducts">
-        {products.products.map((product, index) => (
-          <Product product={product} />
-        ))}
+        {products.products
+          .slice(2, products.products.length)
+          .map((product, index) => (
+            <Product product={product} />
+          ))}
         <div className="homeBarProductsTitle">
           <p>Top sellers</p>
         </div>

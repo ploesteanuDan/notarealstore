@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import HomeHero from "../components/HomeHero";
 import HomeBar from "../components/HomeBar";
 import HomeEditorials from "../components/HomeEditorials";
+import HomeProducts from "../components/HomeProducts";
 export default function Home() {
   return (
     <div className="home page">
@@ -11,6 +12,7 @@ export default function Home() {
       <HomeHero />
       <HomeBar />
       <HomeEditorials />
+      <HomeProducts />
     </div>
   );
 }
