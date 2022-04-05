@@ -1,3 +1,8 @@
+:root{
+  --purple: #6E63F8;
+  --black: #262626;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +16,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.page{
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1366px) {
+  .page{
+    width: calc(100% - 141px * 2);
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Outfit:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Outfit:wght@100;500;600&display=swap');

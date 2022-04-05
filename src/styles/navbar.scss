@@ -1,0 +1,38 @@
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-direction: row;
+  margin: 72px 0;
+  p{
+    margin: 0;
+    font-family: 'Outfit';
+    font-weight: 500;
+    color: var(--purple);
+  }
+  .navTitle{
+    font-size: 25px;
+  }
+  .navLinks{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-direction: row;
+    .navLink{
+      margin-left: 40px;
+      position: relative;
+      p{
+        font-size: 20px; 
+        font-weight: 400;
+        color: var(--black);
+      }
+      div{
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        background-color: var(--black);
+        bottom: -5px;
+      }
+    }
+  }
+}
