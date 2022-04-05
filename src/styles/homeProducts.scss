@@ -1,5 +1,29 @@
 .homeProducts{
+  display:flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 72px 0;
+ .homeProductsProducts{
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap:20px;
+  margin: 72px 0;
+  padding-top: 72px;
+ }
+ .homeProductsLink{
+  font-family: 'Outfit';
+  font-size: 23px;
+  color: var(--purple);
+  display: flex;
+  align-items:center;
+  svg{
+    margin-left: 10px;
+    margin-top: 4px;
+    polyline{
+      stroke-width: 30px;
+      stroke-linecap: square;
+    }
+  }
+ }
 }
