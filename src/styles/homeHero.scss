@@ -1,14 +1,5 @@
 .homeHero{
   display: grid;
-  grid-template-columns: [start] 532px [col1] 2px [col2] auto [end] ;
-  grid-template-rows: 255px;
-  column-gap: 55px;
-  .hLine{
-    height: 383px;
-    width: 2px;
-    background-color: var(--grey);
-    margin-top: 20px;
-  }
   .text{
     display: flex;
     justify-content: space-between;
@@ -19,13 +10,11 @@
     }
     .title{
       font-family: 'Outfit';
-      font-weight: 600;
-      font-size: 55px;
-      color: var(--black)
+      color: var(--black);
+      text-align: left;
     }
     .description{
       font-family: 'Inter';
-      font-size: 18px;
       font-weight: 400;
       line-height: 25px;
       color: var(--grey);
@@ -52,34 +41,110 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-
     .bar{
       background-color: var(--black);
-      height: 72px;
-
     }
     .b1{
-      width: calc(100% - 112px);
       z-index: 1;
       position: relative;
     }
     .b2{
-      width: calc(112px);
       z-index: 1;
       position: relative;
     }
     .b3{
-      width: calc(100%);
       z-index: 3;
       position: relative;
     }
     img{
       position: absolute;
-      width: 330px;
       z-index: 2;
       transform: rotate(-22deg) scalex(-1);
+    }
+  }
+}
+
+@media screen and (min-width: 1366px) {
+.homeHero{
+  grid-template-columns: [start] 532px [col1] 2px [col2] auto [end] ;
+  grid-template-rows: 255px;
+  column-gap: 55px;
+  .hLine{
+    height: 383px;
+    width: 2px;
+    background-color: var(--grey);
+    margin-top: 20px;
+  }
+  .text{
+    .title{
+      font-weight: 600;
+      font-size: 55px;
+    }
+    .description{
+      font-size: 18px;
+    }
+  }
+  .picture{
+    .bar{
+      height: 72px;
+    }
+    .b1{
+      width: calc(100% - 112px);
+    }
+    .b2{
+      width: calc(112px);
+  
+    }
+    .b3{
+      width: calc(100%);
+  
+    }
+    img{
+      width: 330px;
       top: 190px;
       right: 170px;
+    }
+  }
+}
+}
+
+@media screen and (max-width: 1365px) and (min-width: 768px) {
+  .homeHero{
+    grid-template-columns: [start] 1fr [col1]  1fr [end] ;
+    grid-template-rows: 255px;
+    column-gap: 55px;
+    .hLine{
+      display: none;
+    }
+    .text{
+      .title{
+        font-weight: 600;
+        font-size: 40px;
+      }
+      .description{
+        font-size: 16px;
+      }
+    }
+    .picture{
+      .bar{
+        height: 72px;
+      }
+      .b1{
+        width: calc(100% - 112px);
+      }
+      .b2{
+        width: calc(112px);
+    
+      }
+      .b3{
+        width: calc(100%);
+    
+      }
+      img{
+        width: 330px;
+        top: 190px;
+        right: 170px;
+      }
     }
   }
 }
