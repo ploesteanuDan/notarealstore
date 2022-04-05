@@ -9,6 +9,9 @@ export default function HomeBar() {
         {products.products.map((product, index) => (
           <Product product={product} />
         ))}
+        <div className="homeBarProductsTitle">
+          <p>Top sellers</p>
+        </div>
       </div>
     </div>
   );

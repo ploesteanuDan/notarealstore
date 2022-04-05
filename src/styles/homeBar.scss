@@ -1,0 +1,27 @@
+.homeBar{
+  display: grid;
+  grid-template-columns: [start] 532px [col1] auto [end] ;
+  grid-template-rows: 255px;
+  column-gap: 112px;
+  margin-bottom: 72px;
+  .homeBarProducts{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    position: relative;
+    .homeBarProductsTitle{
+      position: absolute;
+      background-color: white;
+      top: -25px;
+      padding-right: 30px;
+      padding-bottom: 20px;
+      p{
+        font-family: 'Outfit';
+        font-weight: 600;
+        font-size: 32px;
+        color: var(--black);
+        margin: 0;
+      }
+    }
+  }
+}
