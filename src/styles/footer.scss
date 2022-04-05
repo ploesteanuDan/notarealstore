@@ -1,0 +1,29 @@
+.footer{
+  width: calc(100% - 141px * 2);
+  margin: 0 auto;
+  padding: 72px 0;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  p{
+    margin: 0;
+    font-family: 'Outfit';
+    font-size: 20px;
+  }
+  .footerPolicy{
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    p{
+      margin-right: 40px;
+      color: var(--grey);
+    }
+  }
+  .footerName{
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    color: var(--black);
+    font-weight: 500;
+  }
+}
