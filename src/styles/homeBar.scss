@@ -24,4 +24,34 @@
       }
     }
   }
+  .homeAllEditorials{
+    height: 100%;
+    img{
+      height: 209px;
+      width: 100%;
+      object-fit:cover;
+      border: 2px solid var(--grey)
+    }
+    span{
+      display: flex;
+      flex-direction: row;
+      justify-content:flex-start;
+      align-items: center;
+      color: var(--black);
+      p{
+        margin-left: 20px;
+        font-family: 'Outfit';
+        font-size: 18px;
+    
+      }
+      svg{
+        margin-left: 10px;
+        margin-top: 3px;
+        polyline{
+          stroke-width: 30px;
+          stroke-linecap: square;
+        }
+      }
+    }
+  }
 }
