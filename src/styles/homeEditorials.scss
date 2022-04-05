@@ -4,6 +4,7 @@
   grid-template-rows:  322px;
   column-gap: 112px;
   margin: 72px 0;
+  padding: 72px 0;
   position: relative;
   img{
     width: 100%;
@@ -16,8 +17,9 @@
   .homeEditorialsLabel{
     position: absolute;
     left: -141px;
+    top: 72px;
     width: 84px;
-    height: 100%;
+    height: calc(100% - 72px * 2);
     background-color: var(--black);
     color: white;
     writing-mode: vertical-lr;
