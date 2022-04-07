@@ -69,3 +69,22 @@
     }
   }
 }
+@media screen and (max-width: 767px) {
+  .homeEditorials{ 
+    position: relative;
+    margin: 58px 0;
+    .hLine, #pic1{
+      display: none;
+    }
+    img{
+      width: calc(100% + 82px);
+      height: 322px;
+      position: relative;
+    }
+    .homeEditorialsLabel{
+      left: -82px;
+      width: 62px;
+      top: 0;
+    }
+  }
+}

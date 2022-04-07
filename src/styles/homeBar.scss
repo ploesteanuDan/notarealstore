@@ -101,3 +101,21 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .homeBar{
+    margin-top: 58px;
+    padding-bottom: 58px;
+    .vl1{
+      left: 0;
+      width: 370px;
+    }
+    .vl2{
+      right: -82px;
+      width: 218px;
+    }
+    .hLine, .homeAllEditorials{
+      display: none;
+    }
+  }
+}

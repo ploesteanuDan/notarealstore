@@ -150,3 +150,47 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .homeHero{
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    .hLine{
+      display: none;
+    }
+    .text{
+      grid-column-start: col1;
+      grid-column-end: end;
+      .title{
+        font-weight: 600;
+        font-size: 40px;
+      }
+      .description{
+        font-size: 16px;
+      }
+    }
+    .picture{
+      grid-column-start: start;
+      grid-column-end: col1;
+      height: 255px;
+      .bar{
+        height: 72px;
+        position: relative;
+      }
+      .b1{
+        width: calc(100%);
+      }
+      .b2{
+        width: calc(100%);
+      }
+      .b3{
+        width: calc(100%);
+      }
+      img{
+        width: 280px;
+        position: relative;
+      }
+    }
+  }
+}
