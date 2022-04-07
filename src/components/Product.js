@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/product.scss";
-import dummypic from "../assets/pictures/shoe.png";
 export default function Product(props) {
   return (
     <div className="product">
       <div className="picContainer">
-        <img src={dummypic} alt={props.product.name} />
+        <img src={props.product.product_picture_url} alt={props.product_name} />
       </div>
       <span>
         <div className="left">
-          <p className="producer">{props.product.producer}</p>
-          <p className="name">{props.product.name}</p>
+          <p className="producer">{props.product.producer_name}</p>
+          <p className="name">{props.product.product_name}</p>
         </div>
         <div className="right">
           <p>$</p>

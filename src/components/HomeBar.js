@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/homeBar.scss";
-import products from "../assets/json/products.json";
 import Product from "./Product";
 import allEditorials from "../assets/pictures/allEditorials.jpg";
 import { CaretRight } from "phosphor-react";
+import axios from "axios";
+
 export default function HomeBar() {
+  const [products, setProducts] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/getfeatured")
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="homeBar">
       <div className="homeBarProducts">
-        {products.products
-          .slice(2, products.products.length)
-          .map((product, index) => (
-            <Product product={product} />
+        {products &&
+          products.map((product, index) => (
+            <div key={index}>
+              <Product product={product} />
+            </div>
           ))}
         <div className="homeBarProductsTitle">
           <p>Top sellers</p>
