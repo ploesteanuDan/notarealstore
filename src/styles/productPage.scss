@@ -1,0 +1,158 @@
+.productPage{
+  .productPageLinks{
+    position: sticky;
+    top: 72px;
+    margin-bottom: 72px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    a{
+      text-decoration: none;
+    }
+    div{
+      display:flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-right: 20px;
+      color : var(--black);
+      p{
+        font-size: 20px;
+        font-family: 'Outfit';
+        margin: 0;
+      }
+      svg{
+        margin-top:2px;
+        margin-right: 4px;
+        polyline{
+          stroke-width: 30px;
+          stroke-linecap: square;
+        }
+      }
+    }
+  
+  }
+  .productGrid{
+    display:grid;
+    grid-template-columns: [start] 348px [col1] auto [end];
+    column-gap: 92px;
+    margin-bottom: 72px;
+    .productInfo{
+      position:sticky;
+      top: calc(72px * 2 + 25px);
+      height: 408px;
+      display: grid;
+      row-gap: 20px;
+      .productName{
+        display:flex;
+        p{
+          font-size: 32px;
+          font-family: 'Outfit';
+          font-weight: 600;
+          color: var(--black);
+          margin: 0;
+        }
+        .productProducer{
+          color: var(--grey);
+          margin-right: 10px;
+        }
+      }
+      .productDescription{
+        p{
+          font-family: 'Inter';
+          font-size: 18px;
+          color: var(--grey);
+          text-align: left;
+          line-height: 25px;
+          margin: 0;
+          height: 71px;
+          display: -webkit-box;
+          max-width: 100%;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      }
+      .productDropdown{
+        width: 100%;
+        height: 48px;
+        border: 2px solid var(--grey);
+      }
+      .line{
+        width: 100%;
+        height: 2px;
+        background-color: var(--grey);
+      }
+      .productPrice{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        div{
+          display:flex;
+          align-items: center;
+          p{
+            font-family: 'Inter';
+          font-size: 18px;
+          color: var(--grey);
+          text-align: right;
+          margin: 0;
+          }
+        }
+        .price{
+          p{
+            color: var(--purple);
+            text-align: lefft; 
+          }
+        }
+      }
+      .productButtons{
+        display:grid;
+        grid-template-columns: auto 50px;
+        column-gap: 20px;
+        div{
+          width: 100%;
+          height: 50px;
+          background-color: var(--purple);
+          display: flex;
+          align-items: center;
+          color: white;
+          p{
+            font-family: 'Outfit';
+            font-size: 20px;
+            margin-left: 20px;
+          }
+          svg{
+            polyline, path, rect{
+              stroke-width: 20px;
+              stroke-linecap: square;
+            }
+          }
+        }
+        .toPurchase{
+          justify-content: space-between;
+          svg{
+            margin-right: 20px;
+          }
+        }
+        .toBasket{
+          justify-content:center;
+        }
+      }
+    }
+    .productPictures{
+      display: grid;
+      grid-template-columns: [start] 276px [col1] auto [end];
+      grid-template-rows: 408px repeat(1, 241px);
+      column-gap: 20px;
+      row-gap: 20px;
+      div{
+        width: 100%;
+        background-position: center center;
+        background-size: cover;
+      }
+      #picture0{
+        grid-column-start: start;
+        grid-column-end: end;
+      }
+    }
+  }
+}
