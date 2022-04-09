@@ -12,16 +12,18 @@ export default function Navbar() {
         <List size={25} />
       </div>
       <div className="navLinks">
-        <div className="navLink">
-          <p
-            style={{
-              color: location === "/" ? "var(--black)" : "var(--grey)",
-            }}
-          >
-            Home
-          </p>
-          {location === "/" && <div className="navLinkBar" />}
-        </div>
+        <Link to={"/"}>
+          <div className="navLink">
+            <p
+              style={{
+                color: location === "/" ? "var(--black)" : "var(--grey)",
+              }}
+            >
+              Home
+            </p>
+            {location === "/" && <div className="navLinkBar" />}
+          </div>
+        </Link>
         <div className="navLink">
           <p
             style={{

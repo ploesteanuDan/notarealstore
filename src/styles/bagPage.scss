@@ -102,6 +102,73 @@
    .products{
      min-height: calc(510px - 4px);
      border: 2px solid var(--grey);
+     .productContent{
+       padding: 20px;
+       display: grid;
+       grid-template-columns: [start] 87.5px [col1] auto [col2] 50px [end];
+       grid-template-rows: [start] 40px [row1] 40px [end];
+       column-gap: 20px;
+       row-gap: calc(87.5px - 40px *2);
+       img{
+         grid-column-start: start;
+         grid-column-end: col1;
+         grid-row-start: start;
+         grid-row-end: end;
+         width: 100%;
+       }
+       p{
+         font-family: 'Outfit';
+         font-size: 17px;
+       }
+       .productName{ 
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+        grid-column-start: col1;
+        grid-column-end: col2;
+        grid-row-start: start;
+        grid-row-end: row1;
+        p{
+          margin: 0;
+          margin-right: 5px;
+          color: var(--black)
+        }
+       }
+       .productSize{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        grid-column-start: col1;
+        grid-column-end: col2;
+        grid-row-start: row1;
+        grid-row-end: end;
+        p{
+          margin: 0;
+          margin-right: 5px;
+          color: var(--grey)
+        }
+       }
+       .productPrice{  
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        grid-column-start: col2;
+        grid-column-end: end;
+        grid-row-start: start;
+        grid-row-end: row1;
+        p{
+          margin: 0;
+          color: var(--purple)
+        }
+       }
+     }
+     .line{
+       position: relative;
+       left: 20px;
+       width: calc(100% - 40px);
+       height: 2px;
+       background-color: var(--grey);
+     }
    }
   }
    

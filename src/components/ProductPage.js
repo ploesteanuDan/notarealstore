@@ -15,6 +15,22 @@ export default function ProductPage() {
   const [colors, setColors] = useState([]);
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedInventory, setSelectedInventory] = useState(null);
+  useEffect(() => {
+    if (!selectedSize) {
+      return;
+    }
+    axios
+      .get("http://localhost:3001/getinventory", {
+        params: { product_id: productId, size_id: selectedSize.value },
+      })
+      .then((response) => {
+        setSelectedInventory(response.data[0].product_inventory_id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [selectedSize, setSelectedSize]);
   useEffect(() => {
     axios
       .get("http://localhost:3001/getproduct", {
@@ -35,7 +51,7 @@ export default function ProductPage() {
     let sizeOptions = [];
     product.availableSizes.forEach((size) => {
       const option = {
-        value: size.uk,
+        value: size.product_size_id,
         label: (
           <div className="size">
             <p>{size.uk + " UK"}</p>
@@ -131,9 +147,11 @@ export default function ProductPage() {
               <div
                 className="toBasket"
                 onClick={() => {
+                  if (!selectedInventory) {
+                    return;
+                  }
                   addToCart({
-                    product_variation_id: productId,
-                    size: selectedSize,
+                    product_inventory_id: selectedInventory,
                   });
                 }}
               >

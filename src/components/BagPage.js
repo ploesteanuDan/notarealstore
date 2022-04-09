@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import "../styles/bagPage.scss";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import { CaretRight } from "phosphor-react";
-export default function BagPage(props) {
+import axios from "axios";
+export default function BagPage() {
+  const [inventoryIds, setInventoryIds] = useState(null);
+  const [cartProducts, setCartProducts] = useState([]);
+  const cart = useStoreState((state) => state.cart);
+
+  useEffect(() => {
+    if (!cart.length) {
+      return;
+    }
+    console.log("cart", cart);
+    let inventory_id_array = [];
+    cart.forEach((product) =>
+      inventory_id_array.push(product.product_inventory_id)
+    );
+    inventory_id_array = inventory_id_array.join(",");
+    axios
+      .get("http://localhost:3001/getcartproducts", {
+        params: { inventory_id_array: '"' + inventory_id_array + '"' },
+      })
+      .then((response) => {
+        console.log("response.data[0]", response.data);
+        setCartProducts(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [cart]);
+
   return (
     <div className="bag page">
       <Navbar />
@@ -32,28 +61,36 @@ export default function BagPage(props) {
             These are all the products stored in your bag. One more step and
             they're all yours!
           </p>
-
           <div className="products">
-            {props.products &&
-              props.products.map((product) => (
-                <div className="product">
+            {cartProducts &&
+              cartProducts.map((product, index) => (
+                <div className="product" key={index}>
                   <div className="productContent">
-                    <img src={product.picture} alt={product.product_name} />
-                    <div>
+                    <img
+                      src={product.product_picture_url}
+                      alt={product.product_name}
+                    />
+                    <div className="productName">
                       <p>{product.producer_name}</p>
                       <p>{product.product_name}</p>
                     </div>
-                    <div>
+                    <div className="productSize">
                       <p>Size</p>
-                      <p>{product.size}</p>
+                      <p>{product.us}</p>
                       <p>US</p>
                     </div>
-                    <div>
+                    <div className="productPrice">
                       <p>$</p>
                       <p>{product.price}</p>
                     </div>
                   </div>
-                  <div className="line" />
+                  <div
+                    className="line"
+                    style={{
+                      display:
+                        index === cartProducts.length - 1 ? "none" : "block",
+                    }}
+                  />
                 </div>
               ))}
           </div>
