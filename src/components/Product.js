@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import "../styles/product.scss";
 export default function Product(props) {
-  console.log(props);
   return (
     <Link to={"product/" + props.product.product_variation_id}>
       <div className="product">

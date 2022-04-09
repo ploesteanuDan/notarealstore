@@ -1,7 +1,10 @@
 import React from "react";
 import "../styles/navbar.scss";
+import { Link, useLocation } from "react-router-dom";
 import { List, User, ShoppingBag } from "phosphor-react";
 export default function Navbar() {
+  let location = useLocation().pathname;
+
   return (
     <div className="navbar">
       <p className="navTitle">Not a real store</p>
@@ -10,16 +13,30 @@ export default function Navbar() {
       </div>
       <div className="navLinks">
         <div className="navLink">
-          <p>Home</p>
-          <div className="navLinkBar" />
+          <p
+            style={{
+              color: location === "/" ? "var(--black)" : "var(--grey)",
+            }}
+          >
+            Home
+          </p>
+          {location === "/" && <div className="navLinkBar" />}
         </div>
         <div className="navLink">
-          <p>Our products</p>
-          <div className="navLinkBar" />
+          <p
+            style={{
+              color: location === "/products" ? "var(--black)" : "var(--grey)",
+            }}
+          >
+            Our products
+          </p>
+          {location === "/products" && <div className="navLinkBar" />}
         </div>
-        <div className="navLink">
-          <ShoppingBag size={27} />
-        </div>
+        <Link to={"/shoppingbag"}>
+          <div className="navLink">
+            <ShoppingBag size={27} />
+          </div>
+        </Link>
         <div className="navLink">
           <User size={27} />
         </div>

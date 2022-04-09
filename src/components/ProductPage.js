@@ -3,15 +3,18 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useStoreActions } from "easy-peasy";
 import "../styles/productPage.scss";
 import { CaretLeft, CaretRight, ShoppingBag } from "phosphor-react";
 export default function ProductPage() {
+  const addToCart = useStoreActions((actions) => actions.addToCart);
   const navigate = useNavigate();
   const productId = useParams().productId;
   const [product, setProduct] = useState(null);
   const [sizes, setSizes] = useState([]);
   const [colors, setColors] = useState([]);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
   useEffect(() => {
     axios
       .get("http://localhost:3001/getproduct", {
@@ -100,6 +103,7 @@ export default function ProductPage() {
               classNamePrefix="select"
               className="select"
               placeholder="Sizes"
+              onChange={setSelectedSize}
             />
             <Select
               defaultValue={productId}
@@ -124,7 +128,15 @@ export default function ProductPage() {
                 <p>Buy now</p>
                 <CaretRight size={20} />
               </div>
-              <div className="toBasket">
+              <div
+                className="toBasket"
+                onClick={() => {
+                  addToCart({
+                    product_variation_id: productId,
+                    size: selectedSize,
+                  });
+                }}
+              >
                 <ShoppingBag size={23} />
               </div>
             </div>
