@@ -55,45 +55,54 @@ export default function BagPage() {
             <CaretRight size={17} />
           </div>
         </div>
+
         <div className="bagProducts">
           <p className="bagTitle">Your shopping bag</p>
-          <p className="description">
-            These are all the products stored in your bag. One more step and
-            they're all yours!
-          </p>
-          <div className="products">
-            {cartProducts &&
-              cartProducts.map((product, index) => (
-                <div className="product" key={index}>
-                  <div className="productContent">
-                    <img
-                      src={product.product_picture_url}
-                      alt={product.product_name}
+          {cartProducts.length ? (
+            <p className="description">
+              These are all the products stored in your bag. One more step and
+              they're all yours!
+            </p>
+          ) : (
+            <p className="description">No products in your cart so far</p>
+          )}
+          {cartProducts.length ? (
+            <div className="products">
+              {cartProducts &&
+                cartProducts.map((product, index) => (
+                  <div className="product" key={index}>
+                    <div className="productContent">
+                      <img
+                        src={product.product_picture_url}
+                        alt={product.product_name}
+                      />
+                      <div className="productName">
+                        <p>{product.producer_name}</p>
+                        <p>{product.product_name}</p>
+                      </div>
+                      <div className="productSize">
+                        <p>Size</p>
+                        <p>{product.us}</p>
+                        <p>US</p>
+                      </div>
+                      <div className="productPrice">
+                        <p>$</p>
+                        <p>{product.price}</p>
+                      </div>
+                    </div>
+                    <div
+                      className="line"
+                      style={{
+                        display:
+                          index === cartProducts.length - 1 ? "none" : "block",
+                      }}
                     />
-                    <div className="productName">
-                      <p>{product.producer_name}</p>
-                      <p>{product.product_name}</p>
-                    </div>
-                    <div className="productSize">
-                      <p>Size</p>
-                      <p>{product.us}</p>
-                      <p>US</p>
-                    </div>
-                    <div className="productPrice">
-                      <p>$</p>
-                      <p>{product.price}</p>
-                    </div>
                   </div>
-                  <div
-                    className="line"
-                    style={{
-                      display:
-                        index === cartProducts.length - 1 ? "none" : "block",
-                    }}
-                  />
-                </div>
-              ))}
-          </div>
+                ))}
+            </div>
+          ) : (
+            <div className="products noProducts" />
+          )}
         </div>
       </div>
     </div>
