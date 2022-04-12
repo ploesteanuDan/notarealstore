@@ -1,6 +1,7 @@
 import "../styles/app.scss";
 import Home from "../components/Home";
 import BagPage from "../components/BagPage";
+import AllProductsPage from "../components/AllProductsPage";
 import ProductPage from "../components/ProductPage";
 import Footer from "../components/Footer";
 import { StoreProvider, createStore, action } from "easy-peasy";
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shoppingbag" element={<BagPage />} />
+            <Route path="/products" element={<AllProductsPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
           </Routes>
         </BrowserRouter>

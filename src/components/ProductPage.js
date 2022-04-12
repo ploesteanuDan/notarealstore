@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import axios from "axios";
 import { useStoreActions } from "easy-peasy";
 import "../styles/productPage.scss";
-import { CaretLeft, CaretRight, ShoppingBag } from "phosphor-react";
+import { CaretLeft } from "phosphor-react";
 export default function ProductPage() {
   const addToCart = useStoreActions((actions) => actions.addToCart);
   const navigate = useNavigate();
@@ -100,9 +100,11 @@ export default function ProductPage() {
             <p>Home</p>
           </div>
         </Link>
-        <div>
-          <p>Our products</p>
-        </div>
+        <Link to={"/products"}>
+          <div>
+            <p>Our products</p>
+          </div>
+        </Link>
       </div>
       {product && (
         <div className="productGrid">
@@ -140,12 +142,8 @@ export default function ProductPage() {
               </div>
             </div>
             <div className="productButtons">
-              <div className="toPurchase">
-                <p>Buy now</p>
-                <CaretRight size={20} />
-              </div>
               <div
-                className="toBasket"
+                className="toPurchase"
                 onClick={() => {
                   if (!selectedInventory) {
                     return;
@@ -155,7 +153,7 @@ export default function ProductPage() {
                   });
                 }}
               >
-                <ShoppingBag size={23} />
+                <p>Add to cart</p>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/product.scss";
 export default function Product(props) {
   return (
-    <Link to={"product/" + props.product.product_variation_id}>
+    <Link to={"/product/" + props.product.product_variation_id}>
       <div className="product">
         <div className="picContainer">
           <img

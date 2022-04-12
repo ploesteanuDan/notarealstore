@@ -1,13 +1,23 @@
 import React from "react";
 import "../styles/navbar.scss";
 import { Link, useLocation } from "react-router-dom";
-import { List, User, ShoppingBag } from "phosphor-react";
+import {
+  List,
+  User,
+  ShoppingBag,
+  Storefront,
+  HouseSimple,
+} from "phosphor-react";
+import { useStoreState } from "easy-peasy";
+
 export default function Navbar() {
   let location = useLocation().pathname;
-
+  const cart = useStoreState((state) => state.cart);
   return (
     <div className="navbar">
-      <p className="navTitle">Not a real store</p>
+      <Link to={"/"}>
+        <p className="navTitle">Not a real store</p>
+      </Link>
       <div className="navHamburger">
         <List size={25} />
       </div>
@@ -19,28 +29,55 @@ export default function Navbar() {
                 color: location === "/" ? "var(--black)" : "var(--grey)",
               }}
             >
-              Home
+              <HouseSimple size={27} />
             </p>
             {location === "/" && <div className="navLinkBar" />}
+          </div>
+        </Link>
+        <Link to="/products">
+          <div className="navLink">
+            <p
+              style={{
+                color:
+                  location === "/products" ? "var(--black)" : "var(--grey)",
+              }}
+            >
+              <Storefront size={27} />
+            </p>
+            {location === "/products" && <div className="navLinkBar" />}
+          </div>
+        </Link>
+        <Link to={"/shoppingbag"}>
+          <div className="navLink">
+            <p
+              style={{
+                color:
+                  location === "/shoppingbag" ? "var(--black)" : "var(--grey)",
+              }}
+            >
+              <ShoppingBag size={27} />
+            </p>
+            <p
+              className="cartCounter"
+              style={{
+                color:
+                  location === "/shoppingbag" ? "var(--black)" : "var(--grey)",
+              }}
+            >
+              {cart.length <= 0 ? "" : cart.length}
+            </p>
+            {location === "/shoppingbag" && <div className="navLinkBar" />}
           </div>
         </Link>
         <div className="navLink">
           <p
             style={{
-              color: location === "/products" ? "var(--black)" : "var(--grey)",
+              color: location === "/account" ? "var(--black)" : "var(--grey)",
             }}
           >
-            Our products
+            <User size={27} />
           </p>
-          {location === "/products" && <div className="navLinkBar" />}
-        </div>
-        <Link to={"/shoppingbag"}>
-          <div className="navLink">
-            <ShoppingBag size={27} />
-          </div>
-        </Link>
-        <div className="navLink">
-          <User size={27} />
+          {location === "/account" && <div className="navLinkBar" />}
         </div>
       </div>
     </div>

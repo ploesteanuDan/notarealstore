@@ -130,7 +130,7 @@
       }
       .productButtons{
         display:grid;
-        grid-template-columns: auto 50px;
+        grid-template-columns: auto;
         column-gap: 20px;
         div{
           width: 100%;
@@ -138,27 +138,13 @@
           background-color: var(--purple);
           display: flex;
           align-items: center;
+          justify-content: center;
           color: white;
+          cursor: pointer;
           p{
             font-family: 'Outfit';
             font-size: 20px;
-            margin-left: 20px;
           }
-          svg{
-            polyline, path, rect{
-              stroke-width: 20px;
-              stroke-linecap: square;
-            }
-          }
-        }
-        .toPurchase{
-          justify-content: space-between;
-          svg{
-            margin-right: 20px;
-          }
-        }
-        .toBasket{
-          justify-content:center;
         }
       }
     }
