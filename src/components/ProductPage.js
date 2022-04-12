@@ -4,8 +4,16 @@ import Select from "react-select";
 import Navbar from "./Navbar";
 import axios from "axios";
 import { useStoreActions } from "easy-peasy";
+import { motion } from "framer-motion";
 import "../styles/productPage.scss";
 import { CaretLeft } from "phosphor-react";
+const buttonVariants = {
+  on: {
+    opacity: 1,
+    pointerEvents: "all",
+  },
+  off: { opacity: 0.5, pointerEvents: "none" },
+};
 export default function ProductPage() {
   const addToCart = useStoreActions((actions) => actions.addToCart);
   const navigate = useNavigate();
@@ -142,7 +150,10 @@ export default function ProductPage() {
               </div>
             </div>
             <div className="productButtons">
-              <div
+              <motion.div
+                initial={"off"}
+                variants={buttonVariants}
+                animate={selectedSize ? "on" : "off"}
                 className="toPurchase"
                 onClick={() => {
                   if (!selectedInventory) {
@@ -154,7 +165,7 @@ export default function ProductPage() {
                 }}
               >
                 <p>Add to cart</p>
-              </div>
+              </motion.div>
             </div>
           </div>
           <div className="productPictures">
