@@ -9,9 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 const store = createStore({
   cart: [],
   addToCart: action((state, payload) => {
-    console.log("payload", payload);
     state.cart.push(payload);
-    console.log(payload);
   }),
   resetCart: action((state, payload) => ({
     ...initialState,

@@ -8,12 +8,34 @@ export default function BagPage() {
   const [inventoryIds, setInventoryIds] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
   const cart = useStoreState((state) => state.cart);
-
+  const userData = {
+    email: "dsadsa",
+    name: "dsa",
+    surname: "da",
+  };
+  function postOrder() {
+    let items = [];
+    cart.forEach((item) => {
+      items.push(item.product_inventory_id);
+    });
+    axios
+      .post("http://localhost:3001/postorder", null, {
+        params: { ...userData, items },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    let test = { ...userData, items: 1 };
+    console.log("test", test);
+  }
   useEffect(() => {
     if (!cart.length) {
       return;
     }
-    console.log("cart", cart);
+
     let inventory_id_array = [];
     cart.forEach((product) =>
       inventory_id_array.push(product.product_inventory_id)
@@ -24,7 +46,6 @@ export default function BagPage() {
         params: { inventory_id_array: '"' + inventory_id_array + '"' },
       })
       .then((response) => {
-        console.log("response.data[0]", response.data);
         setCartProducts(response.data);
       })
       .catch((err) => {
@@ -50,7 +71,12 @@ export default function BagPage() {
           <input type="text" placeholder="Adress" />
           <input type="text" placeholder="Adress (optional)" />
           <div className="line" />
-          <div className="button">
+          <div
+            className="button"
+            onClick={() => {
+              postOrder();
+            }}
+          >
             <p>To Stripe payment</p>
             <CaretRight size={17} />
           </div>
