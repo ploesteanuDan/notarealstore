@@ -73,7 +73,12 @@ export default function AccountPage() {
       <Navbar />
       <div className="accountBar">
         <div>
-          <p>Welcome, Dan</p>
+          <p>
+            Welcome
+            {localStorage.getItem("user_name")
+              ? ", " + localStorage.getItem("user_name")
+              : ""}
+          </p>
         </div>
         <div
           className="accountLogout"
