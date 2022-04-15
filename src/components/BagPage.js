@@ -7,12 +7,12 @@ import axios from "axios";
 export default function BagPage() {
   const [inventoryIds, setInventoryIds] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
+  const [userData, setUserData] = useState({
+    email: "",
+    name: "",
+    surname: "",
+  });
   const cart = useStoreState((state) => state.cart);
-  const userData = {
-    email: "dsadsa",
-    name: "dsa",
-    surname: "da",
-  };
   function postOrder() {
     let items = [];
     cart.forEach((item) => {
@@ -23,7 +23,8 @@ export default function BagPage() {
         params: { ...userData, items },
       })
       .then((response) => {
-        console.log(response.data);
+        console.log("params", { ...userData, items });
+        console.log("sent status", response.status);
       })
       .catch((err) => {
         console.log(err);
@@ -63,9 +64,25 @@ export default function BagPage() {
             Fill in with your personal data and move to the payment process with
             Stripe
           </p>
-          <input type="email" placeholder="Email" />
-          <input type="text" placeholder="Name" />
-          <input type="text" placeholder="Surname" />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Surname"
+            onChange={(e) =>
+              setUserData({ ...userData, surname: e.target.value })
+            }
+          />
           <div className="line" />
           <input type="text" placeholder="City" />
           <input type="text" placeholder="Adress" />
