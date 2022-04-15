@@ -3,6 +3,7 @@ import Home from "../components/Home";
 import BagPage from "../components/BagPage";
 import AllProductsPage from "../components/AllProductsPage";
 import ProductPage from "../components/ProductPage";
+import AccountPage from "../components/AccountPage";
 import Footer from "../components/Footer";
 import { StoreProvider, createStore, action } from "easy-peasy";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shoppingbag" element={<BagPage />} />
+            <Route path="/account" element={<AccountPage />} />
             <Route path="/products" element={<AllProductsPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
           </Routes>

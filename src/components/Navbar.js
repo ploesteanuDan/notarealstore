@@ -69,16 +69,18 @@ export default function Navbar() {
             {location === "/shoppingbag" && <div className="navLinkBar" />}
           </div>
         </Link>
-        <div className="navLink">
-          <p
-            style={{
-              color: location === "/account" ? "var(--black)" : "var(--grey)",
-            }}
-          >
-            <User size={27} />
-          </p>
-          {location === "/account" && <div className="navLinkBar" />}
-        </div>
+        <Link to="/account">
+          <div className="navLink">
+            <p
+              style={{
+                color: location === "/account" ? "var(--black)" : "var(--grey)",
+              }}
+            >
+              <User size={27} />
+            </p>
+            {location === "/account" && <div className="navLinkBar" />}
+          </div>
+        </Link>
       </div>
     </div>
   );
