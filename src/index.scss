@@ -25,6 +25,7 @@ code {
 @media screen and (min-width: 1366px) {
   .page{
     width: calc(100% - 141px * 2);
+    min-height: calc(100vh - 169px - 72px);
   }
 }
 
