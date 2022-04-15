@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { CaretRight, TrashSimple } from "phosphor-react";
@@ -40,15 +40,15 @@ const orders = [
 ];
 
 export default function AccountPage() {
+  const [orders, setOrders] = useState(null);
   let navigate = useNavigate();
   function logout() {
     localStorage.removeItem("jwt_token");
     localStorage.removeItem("user_id");
-    navigate("/");
+    navigate("/login");
   }
 
   useEffect(() => {
-    console.log(localStorage.getItem("user_id"));
     axios
       .get("http://localhost:3001/getuserorders", {
         headers: {
@@ -59,10 +59,12 @@ export default function AccountPage() {
         },
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data[0]);
+        setOrders(response.data[0]);
       })
       .catch((err) => {
         console.log(err);
+        navigate("/login");
       });
   }, []);
 
@@ -137,24 +139,25 @@ export default function AccountPage() {
         <div className="accountOrders">
           <p className="title">Your orders</p>
           <div className="grid">
-            {orders.map((order, id) => (
-              <div className="order" index={id}>
-                <div className="payment">
-                  <p className="tag">Payment status:</p>
-                  <p>{order.s1 ? "Received" : "Pending"}</p>
+            {orders &&
+              orders.map((order, id) => (
+                <div className="order" index={id}>
+                  <div className="payment">
+                    <p className="tag">Payment status:</p>
+                    <p>{order.s1 ? "Received" : "Pending"}</p>
+                  </div>
+                  <div className="delivery">
+                    <p className="tag">Delivery status:</p>
+                    <p>{order.s2 ? "Delivered" : "On its way"}</p>
+                  </div>
+                  <div className="date">{order.date}</div>
+                  <div className="id">#{order.order_id}</div>
+                  <div className="line" />
+                  <div className="showProducts">
+                    <p>See ordered products</p>
+                  </div>
                 </div>
-                <div className="delivery">
-                  <p className="tag">Delivery status:</p>
-                  <p>{order.s2 ? "Delivered" : "On its way"}</p>
-                </div>
-                <div className="date">{order.date}</div>
-                <div className="id">#{order.id}</div>
-                <div className="line" />
-                <div className="showProducts">
-                  <p>See ordered products</p>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>

@@ -32,12 +32,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/shoppingbag" element={<BagPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/account"
-              element={
-                logged() ? <AccountPage /> : <Navigate replace to="/login" />
-              }
-            />
+            <Route path="/account" element={<AccountPage />} />
             <Route path="/products" element={<AllProductsPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
           </Routes>
