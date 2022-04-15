@@ -21,10 +21,6 @@ const store = createStore({
 
 const initialState = store.getState();
 const logged = () => {
-  console.log(localStorage.getItem("jwt_token"));
-  if (!localStorage.getItem("jwt_token")) {
-    return false;
-  }
   return true;
 };
 function App() {

@@ -1,0 +1,232 @@
+.accountBar{
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+  font-family: 'Outfit';
+  font-size: 20px;
+  color: var(--black);
+  .accountLogout{
+    color: var(--purple);
+  }
+  p{
+    margin: 0;
+  }
+}
+.accountContent{
+  display: grid;
+  row-gap: 72px;
+  margin-bottom: 72px;
+  .title{
+    display:flex;
+    font-size: 32px;
+    font-family: 'Outfit';
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+    height: 45px;
+  }
+  .accountData{
+    .form{
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: [start] 2fr [col1] 2fr [col2] 1fr [col2half] 1fr [end] ;
+      grid-template-rows: [start] 50px [row1] 50px [row2] 50px [end];
+      column-gap: 20px;
+      row-gap: 20px;
+      input{
+        grid-row-start: start;
+        grid-row-end: row1;
+        padding:0 20px;
+        width:calc(100% - 40px - 4px);
+        height: 46px;
+        border: 2px solid var(--grey);
+        font-family: 'Inter';
+        color: var(--black);
+        font-size: 16px;
+      }
+      input::placeholder{
+        font-family: 'Inter';
+        color: var(--grey);
+        font-size: 16px;
+      }
+      .email{
+        grid-column-start: start;
+        grid-column-end: col1;
+      }
+      .name{
+        grid-column-start: col1;
+        grid-column-end: col2;
+      }
+      .surname{
+        grid-column-start: col2;
+        grid-column-end: end;
+      }
+      .change{
+        grid-column-start: col2half;
+        grid-column-end: end;
+        border: none;
+        width: 100%;
+        height: 50px;
+        background-color: var(--purple);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white;
+        p{
+          font-family: 'Outfit';
+          font-size: 20px;
+          margin: 0;
+          margin-left: 20px;
+        }
+        svg{
+          margin-right: 20px;
+          polyline, path, rect{
+            stroke-width: 20px;
+            stroke-linecap: square;
+          }
+        }
+      }
+      .changePass{
+        grid-column-start: start;
+        grid-column-end: col1;
+        grid-row-start: row2;
+        grid-row-end: end;
+        display: flex;
+        align-items: center;
+        font-family: 'Inter';
+        color: var(--grey);
+        font-size: 16px;
+        svg{
+          margin-left: 5px;
+          margin-top: 2px;
+          polyline, path, rect{
+            stroke-width: 20px;
+            stroke-linecap: square;
+          }
+        }
+      }
+    }
+  }
+  .accountAddresses{
+    .grid{
+      margin-top: 20px;
+      display:grid;
+      row-gap: 20px;
+      .address{
+        display: grid;
+        grid-template-columns: [start] 4fr [col1] 4fr [col2] 3fr [col2half] 1fr [end];
+        column-gap: 20px;
+        div{
+          width:calc(100% - 4px);
+          height: 46px;
+          border: 2px solid var(--grey);
+          font-family: 'Inter';
+          color: var(--grey);
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          p{
+            padding-left: 20px;
+         
+        }
+      }
+      button{
+        border: none;
+        background-color: white;
+        color: var(--grey);
+        border: 2px solid var(--grey);
+      }
+      }
+    }
+  }
+  .accountOrders{
+    .grid{
+      margin-top: 20px;
+      display: grid;
+      row-gap: 20px;
+      .order{
+        padding: 20px;
+        width: calc(100% - 40px - 4px);
+        display: grid;
+        grid-template-columns: [start] 1fr [col1] 1fr [end];
+        grid-template-rows: [start] 23px [row1] 23px [row2] 1px [row3] 23px [end] ;
+        column-gap: 20px;
+        row-gap: 20px;
+        border: 2px solid var(--grey);
+        font-family: 'Inter';
+        color: var(--grey);
+        font-size: 16px;
+        p{
+          margin: 0;
+        }
+        .payment{
+          grid-column-start: start;
+          grid-column-end: col1;
+          grid-row-start: start;
+          grid-row-end: row1;
+        }
+        .delivery{
+          grid-column-start: start;
+          grid-column-end: col1;
+          grid-row-start: row1;
+          grid-row-end: row2;
+        }
+        .payment, .delivery{
+          display: flex;
+          align-items: flex-start;
+          justify-content:flex-start;
+          p{
+            margin-right: 5px;
+            color: var(--black)
+          }
+          .tag{
+            color: var(--grey)
+          }
+        }
+        .date{
+          grid-column-start: col1;
+          grid-column-end: end;
+          grid-row-start: start;
+          grid-row-end: row1;
+        }
+        .id{
+          grid-column-start: col1;
+          grid-column-end: end;
+          grid-row-start: row1;
+          grid-row-end: row2;
+        }
+        .date, .id{
+          display: flex;
+          align-items: flex-start;
+          justify-content:flex-end;
+          p{
+            margin-right: 5px;
+            color: var(--black)
+          }
+        }
+        .line{
+          grid-column-start: start;
+          grid-column-end: end;
+          grid-row-start: row2;
+          grid-row-end: row3;
+          width: 100%;
+          height: 2px;
+          background-color: var(--grey);
+        }
+        .showProducts{
+          grid-column-start: col1;
+          grid-column-end: end;
+          grid-row-start: row3;
+          grid-row-end: end;
+          display:flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          color: var(--purple);
+        }
+      }
+    }
+  }
+}

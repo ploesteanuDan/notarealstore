@@ -29,9 +29,12 @@ export default function Login() {
     }
     if (response.data.message === "user is valid" && response.status === 200) {
       localStorage.setItem("jwt_token", response.data.token);
+      localStorage.setItem("user_id", response.data.user_id);
       console.log("jwt ->", localStorage.getItem("jwt_token"));
-      navigate("/account");
+      console.log("r.data", response.data);
     }
+
+    navigate("/account");
   }
 
   return (
