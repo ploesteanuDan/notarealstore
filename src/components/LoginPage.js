@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Login from "./Login";
-export default function AccountPage() {
+export default function LoginPage() {
   return (
-    <div className="account page">
+    <div className="loginpage page">
       <Navbar />
-      logged
+      <Login />
     </div>
   );
 }

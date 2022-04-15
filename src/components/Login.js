@@ -1,6 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import "../styles/login.scss";
 export default function Login() {
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  let navigate = useNavigate();
+  function login() {
+    axios
+      .post("http://localhost:3001/login", null, {
+        params: { ...loginData },
+      })
+      .then((response) => {
+        handleLoginResponse(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function handleLoginResponse(response) {
+    if (response.status !== 200) {
+      alert("An error occured");
+      return;
+    }
+    if (response.data === "user is invalid") {
+      alert("Data is incorrect. Try again.");
+      return;
+    }
+    if (response.data.message === "user is valid" && response.status === 200) {
+      localStorage.setItem("jwt_token", response.data.token);
+      console.log("jwt ->", localStorage.getItem("jwt_token"));
+      navigate("/account");
+    }
+  }
+
   return (
     <div className="login">
       <div className="loginForm">
@@ -8,9 +41,26 @@ export default function Login() {
         <p className="description">
           Fill in your account data or select the data for your new account.
         </p>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
-        <button className="button">
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => {
+            setLoginData({ ...loginData, email: e.target.value });
+          }}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => {
+            setLoginData({ ...loginData, password: e.target.value });
+          }}
+        />
+        <button
+          className="button"
+          onClick={() => {
+            login();
+          }}
+        >
           <p>Log in</p>
         </button>
       </div>

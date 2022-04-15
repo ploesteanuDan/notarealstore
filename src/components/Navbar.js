@@ -73,7 +73,10 @@ export default function Navbar() {
           <div className="navLink">
             <p
               style={{
-                color: location === "/account" ? "var(--black)" : "var(--grey)",
+                color:
+                  location === "/account" || location === "/login"
+                    ? "var(--black)"
+                    : "var(--grey)",
               }}
             >
               <User size={27} />
