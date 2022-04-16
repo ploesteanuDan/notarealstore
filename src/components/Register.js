@@ -75,7 +75,7 @@ export default function Register() {
         <button
           className="button"
           onClick={() => {
-            Register();
+            register();
           }}
         >
           <p>Register</p>

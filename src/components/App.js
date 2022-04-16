@@ -21,9 +21,7 @@ const store = createStore({
 });
 
 const initialState = store.getState();
-const logged = () => {
-  return true;
-};
+
 function App() {
   return (
     <div className="App">
