@@ -6,6 +6,7 @@ import ProductPage from "../components/ProductPage";
 import AccountPage from "../components/AccountPage";
 import Footer from "../components/Footer";
 import LoginPage from "../components/LoginPage";
+import RegisterPage from "../components/RegisterPage";
 import Navbar from "./Navbar";
 import { StoreProvider, createStore, action } from "easy-peasy";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/shoppingbag" element={<BagPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/products" element={<AllProductsPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
