@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/register.scss";
 
 export default function Register() {
@@ -84,6 +84,11 @@ export default function Register() {
       <div className="img">
         <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
       </div>
+      <Link to="/loginch">
+        <div className="linkRegister">
+          <p>Already a user? Log in</p>
+        </div>
+      </Link>
     </div>
   );
 }

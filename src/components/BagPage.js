@@ -64,26 +64,35 @@ export default function BagPage() {
             Fill in with your personal data and move to the payment process with
             Stripe
           </p>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) =>
-              setUserData({ ...userData, email: e.target.value })
-            }
-          />
-          <input
-            type="text"
-            placeholder="Name"
-            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Surname"
-            onChange={(e) =>
-              setUserData({ ...userData, surname: e.target.value })
-            }
-          />
-          <div className="line" />
+          {localStorage.getItem("user_id") ? (
+            <></>
+          ) : (
+            <>
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(e) =>
+                  setUserData({ ...userData, email: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                placeholder="Name"
+                onChange={(e) =>
+                  setUserData({ ...userData, name: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                placeholder="Surname"
+                onChange={(e) =>
+                  setUserData({ ...userData, surname: e.target.value })
+                }
+              />
+              <div className="line" />
+            </>
+          )}
+
           <input type="text" placeholder="City" />
           <input type="text" placeholder="Adress" />
           <input type="text" placeholder="Adress (optional)" />

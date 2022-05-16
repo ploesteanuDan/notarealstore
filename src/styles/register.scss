@@ -77,4 +77,18 @@
       }
     }
   }
+  .linkRegister{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    font-family: 'Inter';
+    color: var(--grey);
+    font-size: 17px;
+    margin-left: 20px;
+    margin-top: 72px;
+    p{
+      margin: 0;
+    }
+  }
 }
