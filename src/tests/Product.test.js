@@ -11,16 +11,25 @@ const dummy = {
   producer_name: "Adidas",
   price: 120,
 };
-test("renders a product card", () => {
+
+test("should render product if props are given", () => {
   render(
     <BrowserRouter>
       <Product product={dummy} />
     </BrowserRouter>
   );
-
-  const productElement = screen.getByTestId("p1");
-  expect(productElement).toBeInTheDocument();
+  const productElement = screen.getByTestId("product");
   expect(productElement).toHaveTextContent("Adidas");
   expect(productElement).toHaveTextContent("Ultraboost");
   expect(productElement).toHaveTextContent("$" + 120);
+});
+
+test("should NOT render product if props are NOT given", () => {
+  render(
+    <BrowserRouter>
+      <Product />
+    </BrowserRouter>
+  );
+  const productContainerElement = screen.getByTestId("productContainer");
+  expect(productContainerElement).not.toHaveTextContent("Adidas");
 });
