@@ -2,6 +2,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import Product from "../components/Product";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
+
 const dummy = {
   product_variation_id: 1,
   product_picture_url:
@@ -10,13 +11,16 @@ const dummy = {
   producer_name: "Adidas",
   price: 120,
 };
-test("test", () => {
+test("renders a product card", () => {
   render(
     <BrowserRouter>
       <Product product={dummy} />
     </BrowserRouter>
   );
+
   const productElement = screen.getByTestId("p1");
   expect(productElement).toBeInTheDocument();
   expect(productElement).toHaveTextContent("Adidas");
+  expect(productElement).toHaveTextContent("Ultraboost");
+  expect(productElement).toHaveTextContent("$" + 120);
 });
