@@ -43,11 +43,28 @@ export default function AccountPage() {
   const [orders, setOrders] = useState(null);
   const [visible, setVisible] = useState(null);
   let navigate = useNavigate();
+
   function logout() {
     localStorage.removeItem("jwt_token");
     localStorage.removeItem("user_id");
     navigate("/login");
   }
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/postsession", null, {
+        params: {
+          user_id: localStorage.getItem("user_id"),
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        console.log("sent new session");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -60,7 +77,7 @@ export default function AccountPage() {
         },
       })
       .then((response) => {
-        console.log(response.data[0]);
+        // console.log(response.data[0]);
         setOrders(response.data[0]);
         setVisible(true);
       })
@@ -133,7 +150,7 @@ export default function AccountPage() {
               <p className="title">Your addresses</p>
               <div className="grid">
                 {addresses.map((address, id) => (
-                  <div className="address" index={id}>
+                  <div className="address" key={id}>
                     <div>
                       <p>{address.city}</p>
                     </div>
@@ -158,7 +175,7 @@ export default function AccountPage() {
               <div className="grid">
                 {orders &&
                   orders.map((order, id) => (
-                    <div className="order" index={id}>
+                    <div className="order" key={id}>
                       <div className="payment">
                         <p className="tag">Payment status:</p>
                         <p>{order.s1 ? "Received" : "Pending"}</p>

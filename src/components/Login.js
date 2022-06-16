@@ -32,10 +32,9 @@ export default function Login() {
       localStorage.setItem("jwt_token", response.data.token);
       localStorage.setItem("user_id", response.data.user_id);
       localStorage.setItem("user_name", response.data.user_name);
-      console.log("jwt ->", localStorage.getItem("jwt_token"));
-      console.log("r.data", response.data);
+      // console.log("jwt ->", localStorage.getItem("jwt_token"));
+      // console.log("r.data", response.data);
     }
-
     navigate("/account");
   }
 
