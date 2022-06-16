@@ -1,9 +1,13 @@
 import axios from "axios";
 
 export default function postAction(element, command, contains, commandOptions) {
+  if (!localStorage.getItem("session_id")) {
+    return;
+  }
   axios
     .post("http://localhost:3001/postsessionaction", {
       params: {
+        session_id: localStorage.getItem("session_id"),
         element: element,
         command: command,
         contains: contains,
