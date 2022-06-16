@@ -80,7 +80,11 @@ export default function ProductPage() {
         response.data.forEach((color, id) => {
           colorOptions.push({
             value: color.product_variation_id,
-            label: color.color_name,
+            label: (
+              <p className="color" style={{ margin: 0 }}>
+                {color.color_name}
+              </p>
+            ),
           });
         });
         setColors(colorOptions);

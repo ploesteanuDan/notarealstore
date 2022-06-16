@@ -6,7 +6,10 @@ export default function Product(props) {
   return (
     <div data-testid="productContainer">
       {props.product && (
-        <Link to={"/product/" + props.product.product_variation_id}>
+        <Link
+          to={"/product/" + props.product.product_variation_id}
+          className={"prodBtn" + props.product.product_variation_id}
+        >
           <div className="product" data-testid="product">
             <div className="picContainer">
               <img
