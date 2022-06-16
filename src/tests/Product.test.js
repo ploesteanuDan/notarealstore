@@ -2,6 +2,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import Product from "../components/Product";
 import "@testing-library/jest-dom";
 import { BrowserRouter } from "react-router-dom";
+import products from "../assets/json/products.json";
 
 const dummy = {
   product_variation_id: 1,
@@ -11,6 +12,21 @@ const dummy = {
   producer_name: "Adidas",
   price: 120,
 };
+
+const dynamicProducts = products.products;
+
+test.each(dynamicProducts)(
+  "should render each product from dynamic list",
+  (product) => {
+    render(
+      <BrowserRouter>
+        <Product product={product} />
+      </BrowserRouter>
+    );
+    const productElement = screen.getByTestId("product");
+    expect(productElement).toHaveTextContent(product.price);
+  }
+);
 
 test("should render product if props are given", () => {
   render(
