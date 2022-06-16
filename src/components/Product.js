@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import postAction from "../handlers/postAction";
 import "../styles/product.scss";
 export default function Product(props) {
   return (
@@ -9,6 +9,9 @@ export default function Product(props) {
         <Link
           to={"/product/" + props.product.product_variation_id}
           className={"prodBtn" + props.product.product_variation_id}
+          onClick={() => {
+            postAction("prodBtn1", "click", "", "");
+          }}
         >
           <div className="product" data-testid="product">
             <div className="picContainer">

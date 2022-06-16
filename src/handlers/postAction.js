@@ -5,7 +5,7 @@ export default function postAction(element, command, contains, commandOptions) {
     return;
   }
   axios
-    .post("http://localhost:3001/postsessionaction", {
+    .post("http://localhost:3001/postsessionaction", null, {
       params: {
         session_id: localStorage.getItem("session_id"),
         element: element,
