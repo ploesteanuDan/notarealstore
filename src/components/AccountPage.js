@@ -58,44 +58,43 @@ export default function AccountPage() {
         },
       })
       .then((response) => {
-        console.log(response.data);
-        console.log("sent new session");
+        console.log("session_id", response.data.session_id);
+        localStorage.setItem("session_id", response.data.session_id);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/getuserorders", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt_token"),
-        },
-        params: {
-          user_id: localStorage.getItem("user_id"),
-        },
-      })
-      .then((response) => {
-        // console.log(response.data[0]);
-        setOrders(response.data[0]);
-        setVisible(true);
-      })
-      .catch((err) => {
-        console.log(err);
-        navigate("/login");
-      });
-    return () => {
-      setVisible(null);
-    };
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3001/getuserorders", {
+  //       headers: {
+  //         Authorization: "Bearer " + localStorage.getItem("jwt_token"),
+  //       },
+  //       params: {
+  //         user_id: localStorage.getItem("user_id"),
+  //       },
+  //     })
+  //     .then((response) => {
+  //       // console.log(response.data[0]);
+  //       setOrders(response.data[0]);
+  //       setVisible(true);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       navigate("/login");
+  //     });
+  //   return () => {
+  //     setVisible(null);
+  //   };
+  // }, []);
 
   return (
     <div className="account page">
       <Navbar />
       {visible ? (
         <>
-          {" "}
           <div className="accountBar">
             <div>
               <p>
