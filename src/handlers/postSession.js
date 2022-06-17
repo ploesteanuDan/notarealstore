@@ -1,12 +1,15 @@
 import axios from "axios";
 import version from "../config/version.json";
-
+import isElectron from "../handlers/isElectron";
 version = version.version;
 
 export default function postSession() {
   if (version !== "staging") {
     console.log("sessions disabled in development mode");
     console.log(version);
+    return;
+  }
+  if (isElectron) {
     return;
   }
   axios
