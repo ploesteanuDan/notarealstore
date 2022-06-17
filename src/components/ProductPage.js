@@ -102,6 +102,21 @@ export default function ProductPage() {
       navigate("/product/" + selectedColor.value);
     }
   }, [selectedColor]);
+
+  function handleSetSelectedSize(selectedSize) {
+    postAction(".select", "click", "Sizes", "true");
+    postAction(".size", "click", "9.5 UK", "");
+    console.log("am bagat");
+    setSelectedSize(selectedSize);
+  }
+
+  function handleSetSelectedColor(selectedColor) {
+    postAction(".select", "click", "Colors", "true");
+    postAction(".color", "click", "Yellow", "");
+    console.log("am bagat");
+    setSelectedColor(selectedColor);
+  }
+
   return (
     <div className="productPage page">
       <Navbar />
@@ -133,7 +148,7 @@ export default function ProductPage() {
               classNamePrefix="select"
               className="select"
               placeholder="Sizes"
-              onChange={setSelectedSize}
+              onChange={handleSetSelectedSize}
             />
             <Select
               defaultValue={productId}
@@ -141,7 +156,7 @@ export default function ProductPage() {
               classNamePrefix="select"
               className="select"
               placeholder="Colors"
-              onChange={setSelectedColor}
+              onChange={handleSetSelectedColor}
             />
             <div className="line" />
             <div className="productPrice">
