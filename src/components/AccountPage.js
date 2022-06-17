@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { CaretRight, TrashSimple } from "phosphor-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import postSession from "../handlers/postSession";
 import "../styles/accountPage.scss";
 const addresses = [
@@ -54,29 +55,29 @@ export default function AccountPage() {
     postSession();
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3001/getuserorders", {
-  //       headers: {
-  //         Authorization: "Bearer " + localStorage.getItem("jwt_token"),
-  //       },
-  //       params: {
-  //         user_id: localStorage.getItem("user_id"),
-  //       },
-  //     })
-  //     .then((response) => {
-  //       // console.log(response.data[0]);
-  //       setOrders(response.data[0]);
-  //       setVisible(true);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       navigate("/login");
-  //     });
-  //   return () => {
-  //     setVisible(null);
-  //   };
-  // }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/getuserorders", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt_token"),
+        },
+        params: {
+          user_id: localStorage.getItem("user_id"),
+        },
+      })
+      .then((response) => {
+        // console.log(response.data[0]);
+        setOrders(response.data[0]);
+        setVisible(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        navigate("/login");
+      });
+    return () => {
+      setVisible(null);
+    };
+  }, []);
 
   return (
     <div className="account page">
