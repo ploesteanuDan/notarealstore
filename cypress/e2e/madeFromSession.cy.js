@@ -1,7 +1,7 @@
 let actions = [];
 import axios from "axios";
 axios
-  .get("http://localhost:3001/getsessions")
+  .get("http://localhost:3001/getlastsession")
   .then((response) => {
     let temp = response.data;
     actions = response.data;
@@ -16,20 +16,22 @@ describe("made from user session", () => {
     cy.viewport(1366, 768);
     cy.visit("http://localhost:3000");
     // for each action stored
-    actions.forEach((action) => {
-      if (action.commandOptions === "true") {
-        action.commandOptions = { force: true };
-      } else {
-        action.commandOptions = { force: false };
-      }
-      if (action.contains) {
-        cy.get(action.element)
-          .contains(action.contains)
-          [action.command](action.commandOptions);
-      } else {
-        cy.get(action.element)[action.command](action.commandOptions);
-      }
-    });
+    if (actions.length) {
+      actions.forEach((action) => {
+        if (action.commandOptions === "true") {
+          action.commandOptions = { force: true };
+        } else {
+          action.commandOptions = { force: false };
+        }
+        if (action.contains) {
+          cy.get(action.element)
+            .contains(action.contains)
+            [action.command](action.commandOptions);
+        } else {
+          cy.get(action.element)[action.command](action.commandOptions);
+        }
+      });
+    }
   });
 });
 

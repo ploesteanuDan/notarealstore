@@ -4,9 +4,6 @@ import version from "../config/version.json";
 version = version.version;
 
 export default function postSession() {
-  if (!localStorage.getItem("session_id")) {
-    return;
-  }
   if (version !== "staging") {
     console.log("sessions disabled in development mode");
     console.log(version);
@@ -14,8 +11,8 @@ export default function postSession() {
   }
   axios
     .post("http://localhost:3001/postsession", null, {
-      params: {
-        user_id: localStorage.getItem("user_id"),
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt_token"),
       },
     })
     .then((response) => {
