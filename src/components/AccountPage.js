@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { CaretRight, TrashSimple } from "phosphor-react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import postSession from "../handlers/postSession";
 import "../styles/accountPage.scss";
 const addresses = [
   {
@@ -51,19 +51,7 @@ export default function AccountPage() {
   }
 
   useEffect(() => {
-    axios
-      .post("http://localhost:3001/postsession", null, {
-        params: {
-          user_id: localStorage.getItem("user_id"),
-        },
-      })
-      .then((response) => {
-        console.log("session_id", response.data.session_id);
-        localStorage.setItem("session_id", response.data.session_id);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    postSession();
   }, []);
 
   // useEffect(() => {
