@@ -106,14 +106,12 @@ export default function ProductPage() {
   function handleSetSelectedSize(selectedSize) {
     postAction(".select", "click", "Sizes", "true");
     postAction(".size", "click", "9.5 UK", "");
-    console.log("am bagat");
     setSelectedSize(selectedSize);
   }
 
   function handleSetSelectedColor(selectedColor) {
     postAction(".select", "click", "Colors", "true");
     postAction(".color", "click", "Yellow", "");
-    console.log("am bagat");
     setSelectedColor(selectedColor);
   }
 
