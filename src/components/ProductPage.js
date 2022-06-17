@@ -192,7 +192,7 @@ export default function ProductPage() {
                   backgroundImage: `url(${picture.product_picture_url})`,
                 }}
                 id={"picture" + index}
-                index={index}
+                key={index}
               />
             ))}
           </div>
