@@ -9,7 +9,12 @@ export default function Register() {
   function register() {
     axios
       .post("http://localhost:3001/register", null, {
-        params: { ...registerData },
+        params: {
+          email: registerData.email,
+          password: registerData.password,
+          name: registerData.name,
+          surname: registerData.surname,
+        },
       })
       .then((response) => {
         handleRegisterResponse(response);
@@ -29,10 +34,7 @@ export default function Register() {
     }
     if (response.data.message === "user is valid" && response.status === 200) {
       localStorage.setItem("jwt_token", response.data.token);
-      localStorage.setItem("user_id", response.data.user_id);
-      localStorage.setItem("user_name", response.data.user_name);
       console.log("jwt ->", localStorage.getItem("jwt_token"));
-      console.log("r.data", response.data);
     }
 
     navigate("/account");
@@ -84,7 +86,7 @@ export default function Register() {
       <div className="img">
         <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
       </div>
-      <Link to="/loginch">
+      <Link to="/login">
         <div className="linkRegister">
           <p>Already a user? Log in</p>
         </div>

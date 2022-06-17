@@ -176,6 +176,7 @@ export default function ProductPage() {
                   if (!selectedInventory) {
                     return;
                   }
+                  postAction(".toPurchase", "click", "", "true");
                   addToCart({
                     product_inventory_id: selectedInventory,
                   });
@@ -192,7 +193,7 @@ export default function ProductPage() {
                   backgroundImage: `url(${picture.product_picture_url})`,
                 }}
                 id={"picture" + index}
-                index={index}
+                key={index}
               />
             ))}
           </div>
