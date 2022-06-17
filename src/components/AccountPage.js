@@ -43,6 +43,7 @@ const orders = [
 export default function AccountPage() {
   const [orders, setOrders] = useState(null);
   const [visible, setVisible] = useState(null);
+  const [username, setUsername] = useState(null);
   let navigate = useNavigate();
 
   function logout() {
@@ -76,6 +77,25 @@ export default function AccountPage() {
     };
   }, []);
 
+  useEffect(() => {
+    if (visible) {
+      axios
+        .get("http://localhost:3001/getuserdetails", {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt_token"),
+          },
+        })
+        .then((response) => {
+          // console.log(response.data[0]);
+
+          console.log(response.data.user_name);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [visible]);
+
   return (
     <div className="account page">
       <Navbar />
@@ -85,9 +105,7 @@ export default function AccountPage() {
             <div>
               <p>
                 Welcome
-                {localStorage.getItem("user_name")
-                  ? ", " + localStorage.getItem("user_name")
-                  : ""}
+                {username && "," + username}
               </p>
             </div>
             <div
