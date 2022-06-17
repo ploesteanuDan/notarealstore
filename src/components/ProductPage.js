@@ -176,6 +176,7 @@ export default function ProductPage() {
                   if (!selectedInventory) {
                     return;
                   }
+                  postAction(".toPurchase", "click", "", "true");
                   addToCart({
                     product_inventory_id: selectedInventory,
                   });
