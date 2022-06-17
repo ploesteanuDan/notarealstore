@@ -10,7 +10,7 @@ export default function Product(props) {
           to={"/product/" + props.product.product_variation_id}
           className={"prodBtn" + props.product.product_variation_id}
           onClick={() => {
-            postAction("prodBtn1", "click", "", "");
+            postAction(".prodBtn1", "click", "", "");
           }}
         >
           <div className="product" data-testid="product">
