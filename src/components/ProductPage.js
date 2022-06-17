@@ -7,6 +7,7 @@ import { useStoreActions } from "easy-peasy";
 import { motion } from "framer-motion";
 import "../styles/productPage.scss";
 import { CaretLeft } from "phosphor-react";
+import postAction from "../handlers/postAction";
 const buttonVariants = {
   on: {
     opacity: 1,
@@ -101,7 +102,6 @@ export default function ProductPage() {
       navigate("/product/" + selectedColor.value);
     }
   }, [selectedColor]);
-
   return (
     <div className="productPage page">
       <Navbar />
