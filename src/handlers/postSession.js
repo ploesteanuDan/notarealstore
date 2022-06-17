@@ -1,6 +1,8 @@
 import axios from "axios";
 import version from "../config/version.json";
 
+version = version.version;
+
 export default function postSession() {
   if (!localStorage.getItem("session_id")) {
     return;
