@@ -4,6 +4,7 @@ import "../styles/bagPage.scss";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { CaretRight } from "phosphor-react";
 import axios from "axios";
+import jwt from "jwt-decode";
 export default function BagPage() {
   const [inventoryIds, setInventoryIds] = useState(null);
   const [cartProducts, setCartProducts] = useState([]);
@@ -11,32 +12,49 @@ export default function BagPage() {
     email: "",
     name: "",
     surname: "",
+    city: "",
+    address: "",
+    addressOptional: "",
   });
   const cart = useStoreState((state) => state.cart);
+  useEffect(() => {
+    if (localStorage.getItem("jwt_token")) {
+      axios
+        .get("http://localhost:3001/getuserdetails", null, {
+          params: { user_email: jwt(localStorage.getItem("jwt_token")) },
+        })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, []);
   function postOrder() {
     let items = [];
     cart.forEach((item) => {
       items.push(item.product_inventory_id);
     });
+    if (!validate(userData)) {
+      console.log("not sent");
+      return;
+    }
     axios
       .post("http://localhost:3001/postorder", null, {
         params: { ...userData, items },
       })
       .then((response) => {
-        console.log("params", { ...userData, items });
         console.log("sent status", response.status);
       })
       .catch((err) => {
         console.log(err);
       });
-    let test = { ...userData, items: 1 };
-    console.log("test", test);
   }
   useEffect(() => {
     if (!cart.length) {
       return;
     }
-
     let inventory_id_array = [];
     cart.forEach((product) =>
       inventory_id_array.push(product.product_inventory_id)
@@ -53,6 +71,23 @@ export default function BagPage() {
         console.log(err);
       });
   }, [cart]);
+
+  function validate(params) {
+    console.log(params);
+    if (params.name.length <= 1 || params.surname.length <= 1) {
+      return false;
+    }
+    if (params.city.length <= 3 || params.address.length <= 3) {
+      return false;
+    }
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(params.email) ===
+      false
+    ) {
+      return false;
+    }
+    return true;
+  }
 
   return (
     <div className="bag page">
@@ -93,9 +128,25 @@ export default function BagPage() {
             </>
           )}
 
-          <input type="text" placeholder="City" />
-          <input type="text" placeholder="Adress" />
-          <input type="text" placeholder="Adress (optional)" />
+          <input
+            type="text"
+            placeholder="City"
+            onChange={(e) => setUserData({ ...userData, city: e.target.value })}
+          />
+          <input
+            type="text"
+            placeholder="Adress"
+            onChange={(e) =>
+              setUserData({ ...userData, address: e.target.value })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Adress (optional)"
+            onChange={(e) =>
+              setUserData({ ...userData, addressOptional: e.target.value })
+            }
+          />
           <div className="line" />
           <div
             className="button"

@@ -61,9 +61,6 @@ export default function AccountPage() {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt_token"),
         },
-        params: {
-          user_id: localStorage.getItem("user_id"),
-        },
       })
       .then((response) => {
         // console.log(response.data[0]);
