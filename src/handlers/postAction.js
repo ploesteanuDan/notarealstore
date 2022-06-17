@@ -13,6 +13,9 @@ export default function postAction(element, command, contains, commandOptions) {
   }
   axios
     .post("http://localhost:3001/postsessionaction", null, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt_token"),
+      },
       params: {
         session_id: localStorage.getItem("session_id"),
         element: element,
