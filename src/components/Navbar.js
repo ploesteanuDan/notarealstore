@@ -81,14 +81,14 @@ export default function Navbar() {
         </Link>
         <Link
           to="/account"
-          onClick={() => {
-            postAction(
-              '[href="/account"] > .navLink > p > svg',
-              "click",
-              "",
-              ""
-            );
-          }}
+          // onClick={() => {
+          //   postAction(
+          //     '[href="/account"] > .navLink > p > svg',
+          //     "click",
+          //     "",
+          //     ""
+          //   );
+          // }}
         >
           <div className="navLink">
             <p
