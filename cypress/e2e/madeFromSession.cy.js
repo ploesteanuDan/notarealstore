@@ -23,9 +23,9 @@ describe("made from user session", () => {
         } else {
           action.commandOptions = { force: false };
         }
-        if (action.contains) {
+        if (action.containss) {
           cy.get(action.element)
-            .contains(action.contains)
+            .contains(action.containss)
             [action.command](action.commandOptions);
         } else {
           cy.get(action.element)[action.command](action.commandOptions);
