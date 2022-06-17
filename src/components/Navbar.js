@@ -9,7 +9,7 @@ import {
   HouseSimple,
 } from "phosphor-react";
 import { useStoreState } from "easy-peasy";
-
+import postAction from "../handlers/postAction";
 export default function Navbar() {
   let location = useLocation().pathname;
   const cart = useStoreState((state) => state.cart);
@@ -47,7 +47,17 @@ export default function Navbar() {
             {location === "/products" && <div className="navLinkBar" />}
           </div>
         </Link>
-        <Link to={"/shoppingbag"}>
+        <Link
+          to={"/shoppingbag"}
+          onClick={() => {
+            postAction(
+              '[href="/shoppingbag"] > .navLink > :nth-child(1) > svg',
+              "click",
+              "",
+              ""
+            );
+          }}
+        >
           <div className="navLink">
             <p
               style={{
@@ -69,7 +79,17 @@ export default function Navbar() {
             {location === "/shoppingbag" && <div className="navLinkBar" />}
           </div>
         </Link>
-        <Link to="/account">
+        <Link
+          to="/account"
+          onClick={() => {
+            postAction(
+              '[href="/account"] > .navLink > p > svg',
+              "click",
+              "",
+              ""
+            );
+          }}
+        >
           <div className="navLink">
             <p
               style={{
