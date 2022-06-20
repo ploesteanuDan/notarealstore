@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Product from "./Product";
-import { MagnifyingGlass, Sliders } from "phosphor-react";
+import { MagnifyingGlass, Sliders, CaretRight } from "phosphor-react";
 import "../styles/allProductsPage.scss";
 export default function AllProductsPage() {
+  const [statePageNumber, setPageNumber] = useState(0);
   const [products, setProducts] = useState(null);
   useEffect(() => {
+    console.log(statePageNumber);
     axios
-      .get("http://localhost:3001/getallproducts")
+      .get("http://localhost:3001/getallproducts", {
+        params: { pageNumber: statePageNumber },
+      })
       .then((response) => {
         console.log(response.data);
         setProducts(response.data);
@@ -16,7 +20,7 @@ export default function AllProductsPage() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [statePageNumber]);
   return (
     <div className="allProducts page">
       <Navbar />
@@ -34,6 +38,16 @@ export default function AllProductsPage() {
         {products &&
           products.map((product, index) => <Product product={product} />)}
       </div>
+      <button
+        className="nextPageButton"
+        style={{ display: products && products.length ? "flex" : "none" }}
+        onClick={() => {
+          setPageNumber(statePageNumber + 1);
+        }}
+      >
+        <p>Next page</p>
+        <CaretRight size={20} />
+      </button>
     </div>
   );
 }
