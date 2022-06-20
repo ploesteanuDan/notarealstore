@@ -2,14 +2,23 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { CaretRight } from "phosphor-react";
 import { useNavigate, Link } from "react-router-dom";
+import { validateEmail, validatePassword } from "../handlers/validation";
 import "../styles/login.scss";
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   let navigate = useNavigate();
   function login() {
+    if (!validateEmail(loginData.email)) {
+      alert("Email is not valid");
+      return;
+    }
+    if (!validatePassword(loginData.password)) {
+      alert("Password is not valid");
+      return;
+    }
     axios
       .post("http://localhost:3001/login", null, {
-        params: { ...loginData },
+        params: { ...loginData, email: validateEmail(loginData.email) },
       })
       .then((response) => {
         handleLoginResponse(response);

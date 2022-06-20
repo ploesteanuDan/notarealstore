@@ -2,15 +2,23 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/register.scss";
-
+import { validateEmail, validatePassword } from "../handlers/validation";
 export default function Register() {
   const [registerData, setRegisterData] = useState({ email: "", password: "" });
   let navigate = useNavigate();
   function register() {
+    if (!validateEmail(registerData.email)) {
+      alert("Email is not valid");
+      return;
+    }
+    if (!validatePassword(registerData.password)) {
+      alert("Password is not valid");
+      return;
+    }
     axios
       .post("http://localhost:3001/register", null, {
         params: {
-          email: registerData.email,
+          email: validateEmail(registerData.email),
           password: registerData.password,
           name: registerData.name,
           surname: registerData.surname,
