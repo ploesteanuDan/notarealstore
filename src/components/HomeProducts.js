@@ -5,7 +5,6 @@ import axios from "axios";
 import "../styles/homeProducts.scss";
 export default function HomeProducts() {
   const [products, setProducts] = useState(null);
-
   useEffect(() => {
     axios
       .get("http://localhost:3001/getlast4products")

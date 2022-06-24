@@ -1,13 +1,13 @@
 import axios from "axios";
 import version from "../config/version.json";
 
-version = version.version;
+let appVersion = version.version;
 
 export default function postAction(element, command, contains, commandOptions) {
   if (!localStorage.getItem("session_id")) {
     return;
   }
-  if (version !== "staging") {
+  if (appVersion !== "staging") {
     console.log("sessions actions disabled in development mode");
     return;
   }

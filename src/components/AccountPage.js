@@ -86,8 +86,6 @@ export default function AccountPage() {
           },
         })
         .then((response) => {
-          // console.log(response.data[0]);
-
           console.log(response.data.user_name);
         })
         .catch((err) => {
