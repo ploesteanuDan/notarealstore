@@ -4,6 +4,7 @@ import isElectron from "../handlers/isElectron";
 let appVersion = version.version;
 
 export default function postSession() {
+  console.log("post session called");
   if (appVersion !== "staging") {
     console.log("sessions disabled in development mode");
     return;
