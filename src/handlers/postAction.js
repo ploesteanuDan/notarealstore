@@ -1,14 +1,18 @@
 import axios from "axios";
 import version from "../config/version.json";
-
-version = version.version;
+import isElectron from "../handlers/isElectron";
+let appVersion = version.version;
 
 export default function postAction(element, command, contains, commandOptions) {
-  if (!localStorage.getItem("session_id")) {
+  if (appVersion !== "staging") {
+    console.log("sessions actions disabled in development mode");
     return;
   }
-  if (version !== "staging") {
-    console.log("sessions actions disabled in development mode");
+  if (!localStorage.getItem("session_id")) {
+    console.log("no session id specified");
+    return;
+  }
+  if (isElectron) {
     return;
   }
   axios

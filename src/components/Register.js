@@ -2,11 +2,21 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles/register.scss";
-
+import { validateEmail, validatePassword } from "../handlers/validation";
 export default function Register() {
   const [registerData, setRegisterData] = useState({ email: "", password: "" });
   let navigate = useNavigate();
   function register() {
+    if (!validateEmail(registerData.email)) {
+      alert("Email is not valid");
+      return;
+    }
+    if (!validatePassword(registerData.password)) {
+      alert(
+        "Password must be at least 6 characters long, contain letters and numbers"
+      );
+      return;
+    }
     axios
       .post("http://localhost:3001/register", null, {
         params: {
@@ -24,20 +34,19 @@ export default function Register() {
       });
   }
   function handleRegisterResponse(response) {
-    if (response.status !== 200) {
-      alert("An error occured");
-      return;
+    console.log(response.data);
+    if (!response.data) {
+      alert("Unknown error occured.");
+    } else {
+      if (response.data.message === "user already exists") {
+        alert(
+          "There's already an account with this email. If it's you, log in."
+        );
+      } else if (response.data.message === "user is valid") {
+        window.localStorage.setItem("jwt_token", response.data.token);
+        navigate("/account");
+      }
     }
-    if (response.data === "user is invalid") {
-      alert("Data is incorrect. Try again.");
-      return;
-    }
-    if (response.data.message === "user is valid" && response.status === 200) {
-      localStorage.setItem("jwt_token", response.data.token);
-      console.log("jwt ->", localStorage.getItem("jwt_token"));
-    }
-
-    navigate("/account");
   }
   return (
     <div className="register">

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { CaretRight } from "phosphor-react";
 import { useNavigate, Link } from "react-router-dom";
+import { validateEmail, validatePassword } from "../handlers/validation";
 import "../styles/login.scss";
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -9,7 +10,7 @@ export default function Login() {
   function login() {
     axios
       .post("http://localhost:3001/login", null, {
-        params: { ...loginData },
+        params: { email: loginData.email, password: loginData.password },
       })
       .then((response) => {
         handleLoginResponse(response);
@@ -18,7 +19,9 @@ export default function Login() {
         console.log(err);
       });
   }
-
+  useEffect(() => {
+    console.log(loginData);
+  }, [loginData]);
   function handleLoginResponse(response) {
     if (response.status !== 200) {
       alert("An error occured");
@@ -30,12 +33,10 @@ export default function Login() {
     }
     if (response.data.message === "user is valid" && response.status === 200) {
       localStorage.setItem("jwt_token", response.data.token);
-      localStorage.setItem("user_id", response.data.user_id);
-      localStorage.setItem("user_name", response.data.user_name);
       // console.log("jwt ->", localStorage.getItem("jwt_token"));
       // console.log("r.data", response.data);
+      navigate("/account");
     }
-    navigate("/account");
   }
 
   return (
