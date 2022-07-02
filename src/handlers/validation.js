@@ -8,9 +8,8 @@ export const validateEmail = (email) => {
 
 export const validatePassword = (password) => {
   return String(password).match(
-    /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+    /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/
     //(?=.*[0-9]) assert string has at least one number
-    //(?=.*[!@#$%^&*]) assert string has at least one symbol
     //{6,16} intre 6 si 16 caractere
   );
 };
