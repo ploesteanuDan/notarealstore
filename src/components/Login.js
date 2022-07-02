@@ -35,8 +35,8 @@ export default function Login() {
       localStorage.setItem("jwt_token", response.data.token);
       // console.log("jwt ->", localStorage.getItem("jwt_token"));
       // console.log("r.data", response.data);
+      navigate("/account");
     }
-    navigate("/account");
   }
 
   return (
