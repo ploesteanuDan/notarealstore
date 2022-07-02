@@ -8,17 +8,9 @@ export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   let navigate = useNavigate();
   function login() {
-    if (!validateEmail(loginData.email)) {
-      alert("Email is not valid");
-      return;
-    }
-    if (!validatePassword(loginData.password)) {
-      alert("Password is not valid");
-      return;
-    }
     axios
       .post("http://localhost:3001/login", null, {
-        params: { ...loginData, email: validateEmail(loginData.email) },
+        params: { email: loginData.email, password: loginData.password },
       })
       .then((response) => {
         handleLoginResponse(response);
@@ -27,7 +19,9 @@ export default function Login() {
         console.log(err);
       });
   }
-
+  useEffect(() => {
+    console.log(loginData);
+  }, [loginData]);
   function handleLoginResponse(response) {
     if (response.status !== 200) {
       alert("An error occured");

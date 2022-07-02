@@ -19,27 +19,6 @@ const addresses = [
   },
 ];
 
-const orders = [
-  {
-    s1: true,
-    s2: true,
-    date: "24/07/22",
-    id: 213,
-  },
-  {
-    s1: true,
-    s2: true,
-    date: "24/07/22",
-    id: 213,
-  },
-  {
-    s1: true,
-    s2: true,
-    date: "24/07/22",
-    id: 213,
-  },
-];
-
 export default function AccountPage() {
   const [orders, setOrders] = useState(null);
   const [visible, setVisible] = useState(null);
