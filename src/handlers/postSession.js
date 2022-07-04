@@ -9,9 +9,9 @@ export default function postSession() {
     console.log("sessions disabled in development mode");
     return;
   }
-  if (isElectron) {
-    return;
-  }
+  // if (isElectron) {
+  //   return;
+  // }
   axios
     .post("http://localhost:3001/postsession", null, {
       headers: {

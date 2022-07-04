@@ -28,12 +28,9 @@ export default function AccountPage() {
   function logout() {
     localStorage.removeItem("jwt_token");
     localStorage.removeItem("user_id");
+    localStorage.removeItem("session_id");
     navigate("/login");
   }
-
-  useEffect(() => {
-    postSession();
-  }, []);
 
   useEffect(() => {
     axios
@@ -46,6 +43,7 @@ export default function AccountPage() {
         // console.log(response.data[0]);
         setOrders(response.data[0]);
         setVisible(true);
+        postSession();
       })
       .catch((err) => {
         console.log(err);

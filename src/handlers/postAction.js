@@ -12,9 +12,6 @@ export default function postAction(element, command, contains, commandOptions) {
     console.log("no session id specified");
     return;
   }
-  if (isElectron) {
-    return;
-  }
   axios
     .post("http://localhost:3001/postsessionaction", null, {
       headers: {
