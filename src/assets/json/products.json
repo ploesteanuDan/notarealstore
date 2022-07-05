@@ -3,24 +3,20 @@
     {
       "producer": "Nike",
       "name": "Air Force 1",
-      "price": "90",
+      "price": "120",
       "picture": "https://images.unsplash.com/photo-1617659512089-6fdec6c54406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
     },
     {
-      "producer": "Nike",
-      "name": "Air Force 1",
-      "price": "90",
+      "producer": "Adidas",
+      "name": "Ultraboost",
       "picture": "https://images.unsplash.com/photo-1617659512089-6fdec6c54406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
     },
     {
-      "producer": "Nike",
-      "name": "Air Force 1",
-      "price": "90",
-      "picture": "https://images.unsplash.com/photo-1617659512089-6fdec6c54406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+      "date": "eronate"
     },
     {
-      "producer": "Nike",
-      "name": "Air Force 1",
+      "producer": "Adidas",
+      "name": "Ultraboost 20",
       "price": "90",
       "picture": "https://images.unsplash.com/photo-1617659512089-6fdec6c54406?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
     }
